@@ -1,0 +1,24 @@
+@import susy
+
+// grid
+$total-columns: 7
+$column-width: 4em
+$gutter-width: 1em
+$grid-padding: 0
+$base-font-size: 14px
+
+// page
+
+.page
+    +container()
+    //@include susy-grid-background
+
+// header
+
+
+
+header, 
+#header-slideshow, 
+.main,
+#main-navigation
+    +span-columns($total-columns omega)

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <!-- Always force latest IE rendering engine or request Chrome Frame -->
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        
+        <!-- Use title if it's in the page YAML frontmatter -->
+        <title><%= data.page.title || "Schmuckwerkstatt Böhme | kreatives Gestalten in Metall" %></title>
+
+        <%= stylesheet_link_tag "vendor/normalize", "site" %>
+        <%= javascript_include_tag "vendor/modernizr-2.6.2.min" %>
+    </head>
+
+    <body class="<%= page_classes %>">
+        <div class="page">
+            <header>
+                <a id="toggle-nav">²</a>
+
+                <nav id="main-navigation" class="hidden">
+                    <%= partial "partials/navigation" %>
+                </nav>
+
+                <div id="logo">
+                    <div id="signet">
+                        <span>Schmuckwerkstatt</span>
+                        <strong>Katharina Böhme</strong>
+                    </div>
+                    <span class="claim">kreatives Gestalten in Metall</span>
+                </div>
+
+                <figure id="header-slideshow">
+                    <%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-1.jpg", :alt => "Schmuckwerkstatt" %>
+                </figure>
+            </header>
+
+            <div class="main" role="main">
+                <%= yield %>
+            </div>
+        </div><!-- end page -->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <%= javascript_include_tag  "site" %>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <!--<script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>-->
+    </body>
+</html>

@@ -1,0 +1,201 @@
+@import "compass/css3/font-face"
+@import "compass/css3/transition"
+@import "compass/css3/box-shadow"
+
+@import "layout/grid"
+@import "animate"
+
+// regular vars
+$general-padding: 1em
+$headline-font: Abel, sans-serif
+$serif: 'Arapey', serif
+$text-font: 'Quattrocento Sans', sans-serif
+$primary-color: #cf372c
+$text-color: #212121
+
+// layout helpers
+
+.hidden
+    display: none !important
+
+.shown
+    display: block
+    +animation(fadeInDown, .3s)
+
+.float-right
+    float: right
+    margin-left: $general-padding/2
+
+%margin-top
+    margin-top: 1em
+
+%margin-top-big
+    margin-top: 2em
+
+%margin-bottom
+    margin-bottom: 1em
+
+%margin-bottom-big
+    margin-bottom: 2em
+
+%padding-bottom
+    padding-bottom: 1em
+
+%border-top
+    border-top: 1px solid $primary-color
+
+%border-bottom
+    border-bottom: 1px solid $primary-color
+
+// typography
+@import url("http://fonts.googleapis.com/css?family=Abel|Quattrocento+Sans:400,700|Arapey:400italic")
++font-face("websymbols", font-files("websymbols-regular-webfont.woff", woff, "websymbols-regular-webfont.ttf", truetype, "websymbols-regular-webfont.svg", svg), "websymbols-regular-webfont.eot")
+
+body
+    color: $text-color
+    font: 14px/18px $text-font
+
+h1, h2, h3, h4
+    color: $primary-color
+    font:
+        weight: 400
+        family: $headline-font
+
+.page-title
+    margin-top: 0
+
+a
+    color: $primary-color
+
+p
+    margin: $general-padding/2 0
+
+// page
+
+.page
+
+// navigation
+
+#toggle-nav
+    position: absolute
+    top: $general-padding
+    right: $general-padding
+    font-family: websymbols
+    cursor: pointer
+    z-index: 10
+
+    &.active
+        color: white
+
+#main-navigation
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 9
+    background-color: $primary-color
+    padding: $general-padding 0
+    +box-shadow(rgba(0,0,0,.3) 0 3px 10px)
+    
+    ul
+        margin: 0
+        padding: 0
+        list-style: none
+
+    li
+        &:first-child a
+            padding-top: 0
+
+        &:last-child
+            border-bottom: none
+
+    a
+        text-decoration: none
+        color: white
+        display: inline-block
+        padding: $general-padding/3 0 $general-padding/3 $general-padding
+        border-bottom: 1px solid rgba(255,255,255, .3)
+
+        +single-transition(all,.3s)
+
+        &:hover
+            padding-left: 1.5em
+            border-color: rgba(255,255,255, 1)
+
+
+// header
+
+header
+    position: relative
+
+#logo
+    padding: $general-padding 0 0 $general-padding
+
+#signet
+    font-family: $headline-font
+    text-transform: uppercase
+    font-size: 1.5em
+    line-height: 1.1em
+    letter-spacing: .05em
+
+    a
+        color: $text-color
+        text-decoration: none
+
+    span
+        display: block
+
+    strong
+        font:
+            size: 1.2em
+            weight: 400
+
+.claim
+    color: $primary-color
+    font:
+        size: 1.2em
+        style: italic
+        family: $serif
+    display: inline-block
+    padding-left: 2em
+
+
+#header-slideshow
+    @extend %margin-top
+    @extend %border-top
+
+    img
+        max-width: 100%
+
+// main content
+
+.main
+    +box-sizing(border-box)
+    padding: $general-padding
+
+    img
+        max-width: 100%
+
+    ul
+        padding: 1.3em
+        list-style: square
+
+.news-entry
+    @extend %margin-bottom
+    @extend %padding-bottom
+    +pie-clearfix
+    border-bottom: 1px solid #eee
+
+.article-head
+    +pie-clearfix()
+
+    h2
+        float: left
+        margin-top: 0
+
+    .date
+        float: right
+        font-size: .8em
+
+.excerpt
+    font-weight: 700
+
