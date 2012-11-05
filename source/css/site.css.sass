@@ -15,6 +15,9 @@ $text-color: #212121
 
 // layout helpers
 
+.clear-float
+    clear: both
+
 .hidden
     display: none !important
 
@@ -24,7 +27,27 @@ $text-color: #212121
 
 .float-right
     float: right
-    margin-left: $general-padding/2
+    margin-left: $general-padding/2 !important
+
+img.float-right
+    margin-right: -7px
+
+.one-third
+    max-width: 33.333333% !important
+
+.red-box
+    display: inline-block
+    background-color: $primary-color
+    padding: $general-padding/2 $general-padding
+    color: white
+
+.pic-title
+    font-size: .8em
+    text-transform: uppercase
+
+
+%margin-top-zero    
+    margin-top: 0
 
 %margin-top
     margin-top: 1em
@@ -60,8 +83,10 @@ h1, h2, h3, h4
     font:
         weight: 400
         family: $headline-font
+    margin: 1.5em 0 .5em 0
 
 .page-title
+    font-size: 1.8em
     margin-top: 0
 
 a
@@ -69,6 +94,16 @@ a
 
 p
     margin: $general-padding/2 0
+
+strong
+    font-weight: 700
+
+    &.italic
+        color: $primary-color
+        font:
+            weight: 400
+            style: italic
+            family: $serif
 
 // page
 
@@ -86,9 +121,10 @@ p
 
     &.active
         color: white
+        position: fixed
 
 #main-navigation
-    position: absolute
+    position: fixed
     top: 0
     left: 0
     z-index: 9
@@ -174,9 +210,12 @@ header
 
     img
         max-width: 100%
+        border: 7px solid
+        margin-left: -7px
+        border-color: rgba(0, 0, 0, .1)
 
     ul
-        padding: 1.3em
+        padding-left: 1.3em
         list-style: square
 
 .news-entry
@@ -198,4 +237,31 @@ header
 
 .excerpt
     font-weight: 700
+
+// über mich
+
+#infobox-wrapper
+    @extend %margin-bottom
+    h3
+        @extend %margin-top-zero
+        margin-bottom: .1em
+
+#infobox
+    +box-sizing(border-box)
+    padding: $general-padding/2
+    background-color: $primary-color
+    color: white
+
+    ul
+        list-style: none
+        padding: 0
+        margin: 0
+        font-size: .85em
+        line-height: 1.2em
+
+        li
+            margin-bottom: $general-padding
+
+            &:last-child
+                margin-bottom: 0
 

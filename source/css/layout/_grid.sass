@@ -1,7 +1,8 @@
 @import susy
 
 // grid
-$total-columns: 7
+$container-style: magic
+$total-columns: 8
 $column-width: 4em
 $gutter-width: 1em
 $grid-padding: 0
@@ -13,12 +14,30 @@ $base-font-size: 14px
     +container()
     //@include susy-grid-background
 
-// header
-
-
-
 header, 
 #header-slideshow, 
 .main,
 #main-navigation
     +span-columns($total-columns omega)
+
+
+// anfertigungen
+
+img.col
+    +box-sizing(border-box)
+
+.col
+    &.full
+        +span-columns($total-columns omega)
+    &.left
+        +span-columns(4)    
+
+    &.right
+        +span-columns(4 omega)
+    
+    &.big
+        +span-columns(5)
+
+    &.small
+        +span-columns(3 omega)
+    
