@@ -12,6 +12,8 @@ $serif: 'Arapey', serif
 $text-font: 'Quattrocento Sans', sans-serif
 $primary-color: #cf372c
 $text-color: #212121
+$border-width: 7px
+$border-color: rgba(0, 0, 0, .1)
 
 // layout helpers
 
@@ -210,9 +212,9 @@ header
 
     img
         max-width: 100%
-        border: 7px solid
-        margin-left: -7px
-        border-color: rgba(0, 0, 0, .1)
+        border: $border-width solid
+        margin-left: -$border-width
+        border-color: $border-color
 
     ul
         padding-left: 1.3em
@@ -267,5 +269,74 @@ header
 
 // gallery
 #flickr-sets
+    ul
+        padding: 0
+        list-style: none
+
+    li
+        cursor: pointer
+        +span-columns($total-columns/2)
+        @extend %margin-bottom
+
+        &:nth-child(2n)
+            +omega
+
+        & > img
+            float: left
+            margin-left: 0
+            max-width: 90%
+
+        &.active
+            +span-columns($total-columns omega)
+
+            & > img
+                display: none
+
+            .title
+                float: none
+    .title
+        float: left
+        width: 100%
+        +box-sizing(border-box)
+        display: block
+        min-height: 42px // @TODO: mhmm maybe set this via js?
+        padding: 7px
+        line-height: 1em
+        background-color: rgba(0,0,0,.05)
+
     img
-        +animation(fadeInDown, .2s, .1s)
+        +animation(fadeInDown, .2s, 0s)
+
+    .pictures-in-set
+        position: relative
+        border: $border-width solid $border-color
+        +pie-clearfix
+
+        img
+            cursor: pointer
+            float: left
+            width: 25%
+            border: none
+            margin-left: 0
+
+            &.large
+                width: 100%
+
+        .close-set
+            font-family: websymbols
+            cursor: pointer
+            position: absolute
+            top: -58px
+            right: -13px
+            z-index: 20
+            font-size: 15px
+
+
+
+
+
+
+
+
+
+

@@ -17,30 +17,42 @@ function getPhotosets (key, userId, wrapper) {
 
         // loop sets and pack into <li>
         $.each(data.photosets.photoset, function (i, set) {
-            var li = $("<li/>").appendTo(list),
+            var li =    $("<li/>").appendTo(list),
                 title = $("<span/>", {
-                    "text":     set.title._content,
-                    "class":    "title"
-                }).appendTo(li),
-                pics = $("<div/>", {
-                    "class":    "pictures-in-set"
-                }).appendTo(li);
+                            "text":     set.title._content,
+                            "class":    "title"
+                        }).appendTo(li),
+                pics =  $("<div/>", {
+                            "class":    "pictures-in-set hidden"
+                        }).appendTo(li);
+
+            // get the index pic
+            getPhotosInSet(key, set.id, li, true);
 
             // append on click function
             li.on("click", function () {
-                $(this).unbind("click");
-                getPhotosInSet(key, set.id, pics, false);
-            });
+                var picContainer = $(this).find(".pictures-in-set");
+                // see if the pictures in the set are already loaded
+                if(picContainer.data("loaded") !== true) {
+                    $("<div/>", {
+                        "class": "loader",
+                        "text": "Bilder laden"
+                    }).prependTo(pics);
 
-            getPhotosInSet(key, set.id, li, true);
+                    getPhotosInSet(key, set.id, pics, false);
+                }
+                // open the container and set the current set active
+                picContainer.toggleClass("hidden");
+                $(this).toggleClass("active");
+            });
         });
         
+        // append the finished list into place
         list.appendTo(wrapper);
     });
 }
 
 function getPhotosInSet (key, setId, wrapper, index) {
-
     wrapper = $(wrapper);
     $.getJSON("http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=" + key + "&photoset_id=" + setId + "&format=json&nojsoncallback=1", function (data) {
         if (index === true) {
@@ -50,18 +62,20 @@ function getPhotosInSet (key, setId, wrapper, index) {
             $.each(data.photoset.photo, function (i, photo) {
                 getPhoto(key, photo.id, wrapper, true);
             });
-            console.log(wrapper.parent());
-            // hide index photo
-            wrapper.siblings("img").addClass("hidden");
-
+            
             // add close button
             $("<a/>", {
-                "class": "closeSet",
-                "text": "close"
-            }).prependTo(wrapper.parent())
-            .on("click", function () {
-                $(this).siblings(".pictures-in-set, img").toggleClass("hidden");
+                "class": "close-set",
+                "text": "×"
+            }).prependTo(wrapper)
+            .on("click", function (e) {
+                e.stopPropagation();
+                $(this).parent().toggleClass("hidden").parent().toggleClass("active");
             });
+            console.log(wrapper);
+            // finish loading pics
+            wrapper.attr("data-loaded", true);
+            wrapper.find(".loader").remove();
         }
     });
 }
@@ -79,12 +93,12 @@ function getPhoto (key, photoId, wrapper, click) {
         // create image tag
         var image = $("<img/>", {
             src: data.sizes.size[1].source
-        })
-        .appendTo(wrapper);
+        });
 
-        // if the picture is NOT the index thumb get the big version click
+        // if the picture is NOT the index thumb get the big version
         if (click === true) {
             image.on("click", function (e) {
+                e.stopPropagation();
                 var $this = $(this),
                     imageSize = 1;
 
@@ -97,7 +111,10 @@ function getPhoto (key, photoId, wrapper, click) {
                 $this
                     .toggleClass("large")
                     .attr("src", data.sizes.size[imageSize].source);
-            });    
+            }).appendTo(wrapper);
+        } else {
+            // if it is the index prepend instead of append so it's before the title
+            image.prependTo(wrapper);
         }
     });
 }
