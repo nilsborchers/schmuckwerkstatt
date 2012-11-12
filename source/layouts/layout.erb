@@ -27,10 +27,6 @@
             <header>
                 <a id="toggle-nav">²</a>
 
-                <nav id="main-navigation" class="hidden">
-                    <%= partial "partials/navigation" %>
-                </nav>
-
                 <div id="logo">
                     <div id="signet">
                         <span>Schmuckwerkstatt</span>
@@ -38,6 +34,10 @@
                     </div>
                     <span class="claim">kreatives Gestalten in Metall</span>
                 </div>
+
+                <nav id="main-navigation">
+                    <%= partial "partials/navigation" %>
+                </nav>
 
                 <figure id="header-slideshow">
                     <%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-1.jpg", :alt => "Schmuckwerkstatt" %>

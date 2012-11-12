@@ -1,8 +1,8 @@
 @import "compass/css3/font-face"
 @import "compass/css3/transition"
 @import "compass/css3/box-shadow"
-
-@import "layout/grid"
+@import "compass/css3/box-sizing"
+@import "compass/utilities/general/clearfix"
 @import "animate"
 
 // regular vars
@@ -24,7 +24,7 @@ $border-color: rgba(0, 0, 0, .1)
     display: none !important
 
 .shown
-    display: block
+    display: block !important
     +animation(fadeInDown, .3s)
 
 .float-right
@@ -123,10 +123,12 @@ strong
 
     &.active
         color: white
-        position: fixed
+        //position: fixed
 
 #main-navigation
-    position: fixed
+    display: none
+    position: absolute
+    width: 100%
     top: 0
     left: 0
     z-index: 9
@@ -166,6 +168,7 @@ header
     position: relative
 
 #logo
+    @extend %margin-bottom
     padding: $general-padding 0 0 $general-padding
 
 #signet
@@ -198,7 +201,6 @@ header
 
 
 #header-slideshow
-    @extend %margin-top
     @extend %border-top
 
     img
@@ -275,11 +277,7 @@ header
 
     li
         cursor: pointer
-        +span-columns($total-columns/2)
         @extend %margin-bottom
-
-        &:nth-child(2n)
-            +omega
 
         & > img
             float: left
@@ -287,8 +285,6 @@ header
             max-width: 90%
 
         &.active
-            +span-columns($total-columns omega)
-
             & > img
                 display: none
 
@@ -296,10 +292,12 @@ header
                 float: none
     .title
         float: left
-        width: 100%
         +box-sizing(border-box)
         display: block
-        min-height: 42px // @TODO: mhmm maybe set this via js?
+        max-width: 100%
+        text-overflow: ellipsis
+        overflow: hidden
+        white-space: nowrap
         padding: 7px
         line-height: 1em
         background-color: rgba(0,0,0,.05)
@@ -315,7 +313,6 @@ header
         img
             cursor: pointer
             float: left
-            width: 25%
             border: none
             margin-left: 0
 
@@ -326,17 +323,12 @@ header
             font-family: websymbols
             cursor: pointer
             position: absolute
-            top: -58px
-            right: -13px
+            top: -30px
+            right: 0
             z-index: 20
             font-size: 15px
 
 
 
-
-
-
-
-
-
+@import "layout/grid"
 

@@ -3,42 +3,83 @@
 // grid
 $container-style: magic
 $total-columns: 8
-$column-width: 4em
-$gutter-width: 1em
+$column-width: 60px
+$gutter-width: 10px
 $grid-padding: 0
 $base-font-size: 14px
+
+$break: 12
 
 // page
 
 .page
-    +container()
-    //@include susy-grid-background
-
-header, 
-#header-slideshow, 
-.main,
-#main-navigation
-    +span-columns($total-columns omega)
-
-
-// anfertigungen
-
-img.col
-    +box-sizing(border-box)
+    +container($total-columns, $break)
 
 .col
-    &.full
-        +span-columns($total-columns omega)
-        
-    &.left
-        +span-columns(4)    
+    +span-columns($total-columns/2)
+    +nth-omega(2n)
 
-    &.right
-        +span-columns(4 omega)
-    
-    &.big
-        +span-columns(5)
+.col.full
+    +span-columns($total-columns)
 
-    &.small
-        +span-columns(3 omega)
-    
+#flickr-sets
+    // ul
+    //     +container()
+
+    li
+        +span-columns($total-columns/2)
+        +nth-omega(2n)
+
+        &.active
+            +span-columns($total-columns omega)
+
+    .pictures-in-set
+        img
+            width: 25%
+
+
++at-breakpoint($break)
+    #toggle-nav
+        display: none
+
+    #main-navigation
+        +pie-clearfix
+        +box-sizing(border-box)
+        position: relative
+        display: block
+        padding: 0
+        +box-shadow(none)
+
+        li
+            float: left
+
+            &:first-child a
+                padding-top: .3em
+
+        a
+            border: none
+            padding: .3em .5em
+
+            &:hover, &.active
+                padding-left: .5em
+                background-color: white
+                color: $primary-color
+
+    .ueber_mich .col.full,
+    #kurszeiten,
+    #kontakt
+        +span-columns($break/2)
+
+    .ueber_mich .col.full:last-of-type,
+    #kontakt
+        +omega    
+
+    #flickr-sets
+        li
+            +remove-nth-omega(2n)
+            +span-columns($break/4)
+            +nth-omega(4n)
+
+        .pictures-in-set
+            img
+                width: 12.5%
