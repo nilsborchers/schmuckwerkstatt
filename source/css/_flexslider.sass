@@ -1,0 +1,68 @@
+// defaults
+.flex-pauseplay span
+    text-transform: capitalize
+
+.slides,
+.flex-control-nav,
+.flex-direction-nav
+    margin: 0
+    padding: 0
+    list-style: none
+
+.flexslider
+    position: relative
+    margin: 0
+    padding: 0
+
+    a:active,
+    a:focus
+        outline: none
+
+    .slides
+        +pie-clearfix
+
+        & > li
+            display: none
+            -webkit-backface-visibility: hidden
+
+        img
+            width: 100%
+            display: block
+
+// weird hacks
+html[xmlns] .slides
+    display: block
+
+* html .slides
+    height: 1%
+
+// no-js fallback
+.no-js .slides > li:first-child
+    display: block
+
+
+// styling
+.flex-control-nav
+    // hide in small versions
+    display: none
+
+    position: absolute
+    left: 10px
+    bottom: 10px
+    z-index: 10
+
+    li
+        display: inline-block
+        margin-right: 4px
+
+    a
+        cursor: pointer
+        color: white
+        display: block
+        text-indent: -9999px
+        width: 4px
+        height: 4px
+        border: 2px solid
+
+        &.flex-active
+            background-color: white
