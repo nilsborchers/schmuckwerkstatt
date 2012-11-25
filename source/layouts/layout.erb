@@ -39,8 +39,11 @@
                     <%= partial "partials/navigation" %>
                 </nav>
 
-                <figure id="header-slideshow">
-                    <%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-1.jpg", :alt => "Schmuckwerkstatt" %>
+                <figure id="header-slideshow" class="flexslider">
+                    <ul class="slides">
+                        <li><%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-1.jpg", :alt => "Schmuckwerkstatt" %></li>
+                        <li><%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-2.jpg", :alt => "Schmuckwerkstatt" %></li>
+                    </ul>
                 </figure>
             </header>
 
@@ -49,12 +52,16 @@
             </div>
         </div><!-- end page -->
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <!--<script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+        <script>
+            // init main slider
+            $(window).load(function() {
+                $('.flexslider').flexslider();
+            });
+
+            var _gaq=[['_setAccount','UA-8876179-4'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>-->
+        </script>
     </body>
 </html>
