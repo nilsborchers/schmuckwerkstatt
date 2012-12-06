@@ -2,11 +2,9 @@
 @import "compass/css3/transition"
 @import "compass/css3/box-shadow"
 @import "compass/css3/box-sizing"
+@import "compass/css3/images"
 @import "compass/utilities/general/clearfix"
 @import "animate"
-
-// plugins
-@import "flexslider"
 
 // regular vars
 $general-padding: 1em
@@ -18,8 +16,10 @@ $text-color: #212121
 $border-width: 7px
 $border-color: rgba(0, 0, 0, .1)
 
-// layout helpers
+// plugins
+@import "flexslider"
 
+// layout helpers
 .clear-float
     clear: both
 
@@ -95,7 +95,11 @@ h1, h2, h3, h4
     margin-top: 0
 
 a
+    +single-transition(color, .2s)
     color: $primary-color
+
+    &:hover
+        color: darken($primary-color, 20%)
 
 p
     margin: $general-padding/2 0
@@ -120,7 +124,7 @@ strong
     right: $general-padding
     font-family: websymbols
     cursor: pointer
-    z-index: 10
+    z-index: 21
 
     &.active
         color: white
@@ -132,7 +136,7 @@ strong
     width: 100%
     top: 0
     left: 0
-    z-index: 9
+    z-index: 20
     background-color: $primary-color
     padding: $general-padding 0
     +box-shadow(rgba(0,0,0,.3) 0 3px 10px)
@@ -272,7 +276,18 @@ header
                 margin-bottom: 0
 
 // gallery
+
+.loader
+    +animation(fadeInText, 1.2s, 0s, ease, alternate, infinite)
+    border: 1px dashed rgba(0, 0, 0, 0.1)
+    text-align: center
+    padding: .2em 1em
+    font-size: .7em
+    text-transform: uppercase
+
 #flickr-sets
+    position: relative
+
     ul
         padding: 0
         list-style: none
@@ -287,11 +302,19 @@ header
             max-width: 90%
 
         &.active
+            +box-shadow(rgba(0, 0, 0, .8) 0 0 10px)
+            position: absolute
+            top: 0 
+            left: 0
+            z-index: 100
+
             & > img
                 display: none
 
             .title
                 float: none
+                background-color: rgba(0, 0, 0, .82)
+                color: white
     .title
         float: left
         +box-sizing(border-box)
@@ -308,9 +331,15 @@ header
         +animation(fadeInDown, .2s, 0s)
 
     .pictures-in-set
-        position: relative
-        border: $border-width solid $border-color
+        +single-transition(all, .2s)
         +pie-clearfix
+        padding: 7px
+        position: relative
+        background-color: rgba(0, 0, 0, .82)
+
+        .loader
+            color: grey
+            border: none
 
         img
             cursor: pointer
@@ -325,11 +354,13 @@ header
             font-family: websymbols
             cursor: pointer
             position: absolute
-            top: -30px
-            right: 0
+            top: -22px
+            right: 7px
             z-index: 20
             font-size: 15px
 
+            &:hover
+                color: white
 
 
 @import "layout/grid"

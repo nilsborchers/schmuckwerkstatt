@@ -17,14 +17,18 @@ function getPhotosets (key, userId, wrapper) {
 
         // loop sets and pack into <li>
         $.each(data.photosets.photoset, function (i, set) {
-            var li =    $("<li/>").appendTo(list),
-                title = $("<span/>", {
-                            "text":     set.title._content,
-                            "class":    "title"
-                        }).appendTo(li),
-                pics =  $("<div/>", {
-                            "class":    "pictures-in-set hidden"
-                        }).appendTo(li);
+            var li =        $("<li/>").appendTo(list),
+                loading =   $("<div/>", {
+                                "text":     "laden",
+                                "class":    "loader"
+                            }).appendTo(li),
+                title =     $("<span/>", {
+                                "text":     set.title._content,
+                                "class":    "title"
+                            }).appendTo(li),
+                pics =      $("<div/>", {
+                                "class":    "pictures-in-set hidden"
+                            }).appendTo(li);
 
             // get the index pic
             getPhotosInSet(key, set.id, li, true);
@@ -72,7 +76,7 @@ function getPhotosInSet (key, setId, wrapper, index) {
                 e.stopPropagation();
                 $(this).parent().toggleClass("hidden").parent().toggleClass("active");
             });
-            console.log(wrapper);
+
             // finish loading pics
             wrapper.attr("data-loaded", true);
             wrapper.find(".loader").remove();
@@ -115,6 +119,7 @@ function getPhoto (key, photoId, wrapper, click) {
         } else {
             // if it is the index prepend instead of append so it's before the title
             image.prependTo(wrapper);
+            image.siblings(".loader").remove();
         }
     });
 }

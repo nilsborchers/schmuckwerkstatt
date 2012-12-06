@@ -43,6 +43,14 @@
                     <ul class="slides">
                         <li><%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-1.jpg", :alt => "Schmuckwerkstatt" %></li>
                         <li><%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-2.jpg", :alt => "Schmuckwerkstatt" %></li>
+                        <li><%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-3.jpg", :alt => "Schmuckwerkstatt" %></li>
+                        <li><%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-4.jpg", :alt => "Schmuckwerkstatt" %></li>
+                        <li><%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-5.jpg", :alt => "Schmuckwerkstatt" %></li>
+                        <li><%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-6.jpg", :alt => "Schmuckwerkstatt" %></li>
+                        <li><%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-7.jpg", :alt => "Schmuckwerkstatt" %></li>
+                        <li><%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-8.jpg", :alt => "Schmuckwerkstatt" %></li>
+                        <li><%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-9.jpg", :alt => "Schmuckwerkstatt" %></li>
+
                     </ul>
                 </figure>
             </header>
@@ -54,8 +62,10 @@
 
         <script>
             // init main slider
-            $(window).load(function() {
-                $('.flexslider').flexslider();
+            $('.flexslider').flexslider({
+                slideshowSpeed: 4000,
+                randomize: true,
+                directionNav: false
             });
 
             var _gaq=[['_setAccount','UA-8876179-4'],['_trackPageview']];

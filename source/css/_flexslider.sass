@@ -43,12 +43,9 @@ html[xmlns] .slides
 
 // styling
 .flex-control-nav
-    // hide in small versions
-    display: none
-
     position: absolute
-    left: 10px
-    bottom: 10px
+    left: 1em
+    bottom: .2em
     z-index: 10
 
     li
@@ -57,12 +54,13 @@ html[xmlns] .slides
 
     a
         cursor: pointer
-        color: white
+        color: rgba(255, 255, 255, .6)
         display: block
         text-indent: -9999px
-        width: 4px
-        height: 4px
-        border: 2px solid
+        width: 5px
+        height: 5px
+        border: 1px solid
+        border-radius: 10px
 
         &.flex-active
-            background-color: white
+            background-color: $primary-color
