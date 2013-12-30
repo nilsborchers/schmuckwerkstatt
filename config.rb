@@ -48,8 +48,8 @@ require 'susy'
 # Methods defined in the helpers block are available in templates
 helpers do
   def sort_pages
-    pages = sitemap.resources.find_all{ 
-      |p| p.source_file.match(/\.html/) 
+    pages = sitemap.resources.find_all{
+      |p| p.source_file.match(/\.html/)
     }
 
     menu_pages = pages.sort {
@@ -86,6 +86,9 @@ configure :build do
 
   # Enable cache buster
   activate :cache_buster
+
+  # Enable asset hash
+  activate :asset_hash
 
   # Use relative URLs
   activate :relative_assets
