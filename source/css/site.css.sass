@@ -7,7 +7,7 @@
 @import "animate"
 
 // regular vars
-$general-padding: 1em
+$general-padding: 2em
 $headline-font: Abel, sans-serif
 $serif: 'Arapey', serif
 $text-font: 'Quattrocento Sans', sans-serif
@@ -76,12 +76,10 @@ img.float-right
     border-bottom: 1px solid $primary-color
 
 // typography
-@import url("http://fonts.googleapis.com/css?family=Abel|Quattrocento+Sans:400,700|Arapey:400italic")
-+font-face("websymbols", font-files("websymbols-regular-webfont.woff", woff, "websymbols-regular-webfont.ttf", truetype, "websymbols-regular-webfont.svg", svg), "websymbols-regular-webfont.eot")
-
 body
     color: $text-color
     font: 14px/18px $text-font
+    background-color: #f6f6f6
 
 h1, h2, h3, h4
     color: $primary-color
@@ -115,6 +113,9 @@ strong
             family: $serif
 
 // page
+
+.page
+    background-color: white
 
 // navigation
 
@@ -173,8 +174,9 @@ header
     position: relative
 
 #logo
-    @extend %margin-bottom
-    padding: $general-padding 0 0 $general-padding
+    display: block
+    padding: $general-padding
+    text-decoration: none
 
 #signet
     font-family: $headline-font
@@ -182,10 +184,7 @@ header
     font-size: 1.5em
     line-height: 1.1em
     letter-spacing: .05em
-
-    a
-        color: $text-color
-        text-decoration: none
+    color: $text-color
 
     span
         display: block

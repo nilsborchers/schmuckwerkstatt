@@ -3,8 +3,8 @@
 // grid
 $container-style: magic
 $total-columns: 8
-$column-width: 64px
-$gutter-width: 10px
+$column-width: 45px
+$gutter-width: 30px
 $grid-padding: 0
 $base-font-size: 14px
 
@@ -39,6 +39,11 @@ $break: 12
 
 
 +at-breakpoint($break)
+    .page
+        border-radius: 2px
+        margin-top: 20px
+        margin-bottom: 50px
+
     #toggle-nav
         display: none
 
@@ -70,6 +75,7 @@ $break: 12
     #kurszeiten,
     #kontakt
         +span-columns($break/2)
+
 
     .ueber_mich .col.full:last-of-type,
     #kontakt
