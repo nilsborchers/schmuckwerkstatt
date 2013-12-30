@@ -12,7 +12,8 @@ $break: 12
 
 // page
 
-.page
+.page,
+footer
     +container($total-columns, $break)
 
 .col
@@ -40,8 +41,9 @@ $break: 12
 
 +at-breakpoint($break)
     .page
-        border-radius: 2px
         margin-top: 20px
+
+    footer
         margin-bottom: 50px
 
     #toggle-nav
