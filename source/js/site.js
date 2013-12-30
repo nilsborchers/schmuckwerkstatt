@@ -1,8 +1,11 @@
-$(document).ready(function (){
+$(function (){
     $("#toggle-nav").on("click", function () {
         $(this).toggleClass("active");
         $("#main-navigation").toggleClass("shown");
     });
+
+    if($('#flickr-sets').length > 0) { getPhotosets(key, userId, "#flickr-sets") };
+
 });
 
 // flickr credentials
@@ -50,7 +53,7 @@ function getPhotosets (key, userId, wrapper) {
                 $(this).toggleClass("active");
             });
         });
-        
+
         // append the finished list into place
         list.appendTo(wrapper);
     });
@@ -66,7 +69,7 @@ function getPhotosInSet (key, setId, wrapper, index) {
             $.each(data.photoset.photo, function (i, photo) {
                 getPhoto(key, photo.id, wrapper, true);
             });
-            
+
             // add close button
             $("<a/>", {
                 "class": "close-set",
@@ -86,8 +89,8 @@ function getPhotosInSet (key, setId, wrapper, index) {
 
 /**
  * get flickr photo for specified id
- * @param  {[type]} key     
- * @param  {[type]} photoId 
+ * @param  {[type]} key
+ * @param  {[type]} photoId
  * @param  {[type]} wrapper element to append the image to
  * @param  {[type]} click   wether or not to append click function to call biggest available image on click
  */

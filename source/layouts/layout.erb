@@ -1,25 +1,17 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
-        <meta charset="utf-8">
+        <title>Schmuckwerkstatt Böhme | <%= data.page.menu_order != 1 ? data.page.menu_title : "Goldschmiede und Trauringkurse. Kreativ Schmuck selbst gestalten." %></title>
 
-        <!-- Always force latest IE rendering engine or request Chrome Frame -->
+        <meta charset="utf-8">
         <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-        <meta name="description" content="">
+        <meta name="description" content="In der Schmuckwerkstatt Böhme bieten wir Goldschmiede- und Trauringkurse an, in welchen Sie ihr eigenes Schmuckstück in kleinen Gruppen (bis 4) anfertigen.">
+        <meta name="keywords" content="Goldschmiedekurse, Trauringkurse, Schmuck selbst gestalten, Handwerk, Gold, Silber, Schmieden">
         <meta name="viewport" content="width=device-width; initial-scale=1.0;">
-        
-        <!-- Use title if it's in the page YAML frontmatter -->
-        <title><%= data.page.title || "Schmuckwerkstatt Böhme | kreatives Gestalten in Metall" %></title>
+
+        <link rel="icon" href="/favicon.png">
 
         <%= stylesheet_link_tag "vendor/normalize", "site" %>
-        <%= javascript_include_tag "vendor/modernizr-2.6.2.min" %>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
-        <%= javascript_include_tag  "vendor/jquery.flexslider", "site" %>
     </head>
 
     <body class="<%= page_classes %>">
@@ -27,13 +19,13 @@
             <header>
                 <a id="toggle-nav">²</a>
 
-                <div id="logo">
+                <a id="logo" href="/">
                     <div id="signet">
                         <span>Schmuckwerkstatt</span>
                         <strong>Katharina Böhme</strong>
                     </div>
                     <span class="claim">kreatives Gestalten in Metall</span>
-                </div>
+                </a>
 
                 <nav id="main-navigation">
                     <%= partial "partials/navigation" %>
@@ -50,7 +42,6 @@
                         <li><%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-7.jpg", :alt => "Schmuckwerkstatt" %></li>
                         <li><%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-8.jpg", :alt => "Schmuckwerkstatt" %></li>
                         <li><%= tag :img, :src => "images/slideshow/schmuckwerkstatt_slideshow-9.jpg", :alt => "Schmuckwerkstatt" %></li>
-
                     </ul>
                 </figure>
             </header>
@@ -59,6 +50,10 @@
                 <%= yield %>
             </div>
         </div><!-- end page -->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <%= javascript_include_tag  "vendor/jquery.flexslider", "site" %>
 
         <script>
             // init main slider
