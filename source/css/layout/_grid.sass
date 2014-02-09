@@ -23,10 +23,7 @@ footer
 .col.full
     +span-columns($total-columns)
 
-#flickr-sets
-    // ul
-    //     +container()
-
+#facebook-photos
     li
         +span-columns($total-columns/2)
         +nth-omega(2n)
@@ -94,15 +91,11 @@ footer
     #kontakt
         +omega
 
-    #flickr-sets
+    #facebook-photos
         li
             +remove-nth-omega(2n)
             +span-columns($break/4)
             +nth-omega(4n)
-
-        .pictures-in-set
-            img
-                width: 12.5%
 
     .news-entry .news-pic
         max-width: 20%

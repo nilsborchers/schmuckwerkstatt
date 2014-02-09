@@ -302,90 +302,23 @@ header
 
 // gallery
 
-.loader
-    +animation(fadeInText, 1.2s, 0s, ease, alternate, infinite)
-    border: 1px dashed rgba(0, 0, 0, 0.1)
-    text-align: center
-    padding: .2em 1em
-    font-size: .7em
-    text-transform: uppercase
+#facebook-photos
+    list-style: none
+    padding: 0
 
-#flickr-sets
-    position: relative
+.photo
+    margin-bottom: $general-padding
 
-    ul
-        padding: 0
-        list-style: none
-
-    li
-        cursor: pointer
-        @extend %margin-bottom
-
-        & > img
-            float: left
-            margin-left: 0
-            max-width: 90%
-
-        &.active
-            +box-shadow(rgba(0, 0, 0, .8) 0 0 10px)
-            position: absolute
-            top: 0
-            left: 0
-            z-index: 100
-
-            & > img
-                display: none
-
-            .title
-                float: none
-                background-color: rgba(0, 0, 0, .82)
-                color: white
-    .title
-        float: left
-        +box-sizing(border-box)
+    a
+        +single-transition(outline, .2s)
         display: block
-        max-width: 100%
-        text-overflow: ellipsis
-        overflow: hidden
-        white-space: nowrap
-        padding: 7px
-        line-height: 1em
-        background-color: rgba(0,0,0,.05)
+        padding-top: 100%
+        background-size: cover
+        background-position: center center
 
-    img
-        +animation(fadeInDown, .2s, 0s)
+        &:hover
+            outline: 5px solid $primary-color
 
-    .pictures-in-set
-        +single-transition(all, .2s)
-        +pie-clearfix
-        padding: 7px
-        position: relative
-        background-color: rgba(0, 0, 0, .82)
-
-        .loader
-            color: grey
-            border: none
-
-        img
-            cursor: pointer
-            float: left
-            border: none
-            margin-left: 0
-
-            &.large
-                width: 100%
-
-        .close-set
-            font-family: websymbols
-            cursor: pointer
-            position: absolute
-            top: -22px
-            right: 7px
-            z-index: 20
-            font-size: 15px
-
-            &:hover
-                color: white
 
 // footer
 
