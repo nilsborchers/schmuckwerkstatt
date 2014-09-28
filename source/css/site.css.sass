@@ -11,8 +11,8 @@ $general-padding: 2em
 $headline-font: Abel, sans-serif
 $serif: 'Arapey', serif
 $text-font: 'Quattrocento Sans', sans-serif
-$primary-color: #cf372c
-$text-color: #212121
+$primary-color: #f2b53b
+$text-color: darken(#777776, 10%)
 $border-width: 7px
 $border-color: rgba(0, 0, 0, .1)
 
@@ -175,33 +175,8 @@ header
 
 #logo
     display: block
-    padding: $general-padding
-    text-decoration: none
-
-#signet
-    font-family: $headline-font
-    text-transform: uppercase
-    font-size: 1.5em
-    line-height: 1.1em
-    letter-spacing: .05em
-    color: $text-color
-
-    span
-        display: block
-
-    strong
-        font:
-            size: 1.2em
-            weight: 400
-
-.claim
-    color: $primary-color
-    font:
-        size: 1.2em
-        style: italic
-        family: $serif
-    display: inline-block
-    padding-left: 2em
+    max-width: 200px
+    padding: $general-padding/2.6 $general-padding
 
 
 #header-slideshow
