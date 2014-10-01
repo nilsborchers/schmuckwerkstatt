@@ -82,7 +82,7 @@ body
     background-color: #f6f6f6
 
 h1, h2, h3, h4
-    color: $primary-color
+    color: darken($primary-color, 10%)
     font:
         weight: 400
         family: $headline-font
@@ -94,7 +94,7 @@ h1, h2, h3, h4
 
 a
     +single-transition(color, .2s)
-    color: $primary-color
+    color: darken($primary-color, 10%)
 
     &:hover
         color: darken($primary-color, 20%)
@@ -255,6 +255,9 @@ header
     h3
         @extend %margin-top-zero
         margin-bottom: .1em
+
+    img
+        max-width: 50%
 
 #infobox
     +box-sizing(border-box)
